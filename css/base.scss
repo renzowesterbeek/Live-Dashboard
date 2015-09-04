@@ -2,9 +2,23 @@
 @import '_mixins.scss';		// Cross-browser implementation of transitions, shadows, etc
 @import '_fonts.scss';		// Font and font-style declarations
 
-body{
+html,
+body {
+	height: 100%;
+}
+body {
 	font-family: $body-font-stack;
 }
-h1{
+h1 {
 	font-family: $header-font-stack;
+}
+.row {
+	border: 1px solid black;
+}
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5 {
+	border: 1px solid black;
 }
