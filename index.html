@@ -13,6 +13,7 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	<link href="css/base.min.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/scripts.min.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 </head>
@@ -25,6 +26,13 @@
         Authorize
       </button>
     </div>
+		<div class="col-md-3" id="clock">
+			<table>
+				<tr><td colspan="2"><h1>00:00</h1></td></tr>
+				<tr><td id="sunrise">6:30</td><td id="sunset">20:30</td></tr>
+				<tr><td colspan="2" id="date">4 september</td></tr>
+			</table>
+		</div>
 		<div class="col-md-3" id="calendar">
 			<h1>Next 24 hours</h1>
 			<ul>
@@ -39,7 +47,6 @@
 		</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
