@@ -1,41 +1,3 @@
-// Your Client ID can be retrieved from your project in the Google
-// Developer Console, https://console.developers.google.com
-var CLIENT_ID = '756478392094-cv1km3slb7h1hdejlnap2iplj55okutb.apps.googleusercontent.com';
-var SCOPES = ["https://www.googleapis.com/auth/calendar"];
-
-function checkAuth() {
-  gapi.auth.authorize(
-    {
-      'client_id': CLIENT_ID,
-      'scope': SCOPES,
-      'immediate': true
-    }, handleAuthResult);
-}
-
-function handleAuthResult(authResult) {
-  var authorizeDiv = document.getElementById('authorize-div');
-  if (authResult && !authResult.error) {
-    // Hide auth UI, then load client library.
-    authorizeDiv.style.display = 'none';
-    loadCalendarApi();
-  } else {
-    // Show auth UI, allowing the user to initiate authorization by
-    // clicking authorize button.
-    authorizeDiv.style.display = 'inline';
-  }
-}
-
-function handleAuthClick(event) {
-  gapi.auth.authorize(
-    {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
-    handleAuthResult);
-  return false;
-}
-
-function loadCalendarApi() {
-  gapi.client.load('calendar', 'v3', listUpcomingEvents);
-}
-
 function listUpcomingEvents() {
   var tomorrow = new Date();
   tomorrow = tomorrow.setDate(tomorrow.getDate() + 1);
@@ -52,6 +14,7 @@ function listUpcomingEvents() {
 
   request.execute(function(resp) {
     var events = resp.items;
+    var personalEvents = [];
 
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
@@ -62,11 +25,13 @@ function listUpcomingEvents() {
         var summary = events[i].summary;
         var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
         var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
-        appendList(start + " | " + end + " " + summary);
+        personalEvents.push(start + " | " + end + " " + summary);
       }
     } else {
-      appendList('No upcoming events found.');
+      personalEvents.push('No upcoming events found.');
     }
+
+    fillList($('#calendar ul'), personalEvents);
 
   });
 
@@ -82,6 +47,7 @@ function listUpcomingEvents() {
 
   school.execute(function(resp) {
     var events = resp.items;
+    var schoolEvents = [];
 
     if (events.length > 0) {
       for (i = 0; i < events.length; i++) {
@@ -92,19 +58,26 @@ function listUpcomingEvents() {
         var summary = events[i].summary;
         var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
         var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
-        appendRooster(start + " | " + end + " " + summary);
+        schoolEvents.push(start + " | " + end + " " + summary);
       }
     } else {
-      appendRooster('No upcoming events found.');
+      schoolEvents.push('No upcoming events found.');
     }
+
+    fillList($('#rooster ul'), schoolEvents);
 
   });
 }
 
-function appendList(message) {
-  $('#calendar ul').append("<li>" + message + "</li>");
-}
+setInterval(function(){
+  $('#calendar ul').html("");
+  $('#rooster ul').html("");
+  listUpcomingEvents();
+}, 5000);
 
-function appendRooster(message) {
-  $('#rooster ul').append("<li>" + message + "</li>");
+function fillList(id, array){
+  id.html('');
+  for(var i = 0; i < array.length; i++){
+    id.append('<li>' + array[i] + '</li>');
+  }
 }

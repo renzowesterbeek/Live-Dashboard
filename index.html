@@ -14,6 +14,7 @@
 	<![endif]-->
 	<link href="css/base.min.css" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../js/datetime.js"></script>
 	<script src="js/scripts.min.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 </head>
@@ -29,7 +30,7 @@
 		<div class="col-md-3" id="clock">
 			<table>
 				<tr><td colspan="2"><h1>00:00</h1></td></tr>
-				<tr><td id="sunrise">6:30</td><td id="sunset">20:30</td></tr>
+				<tr><td id="sunrise"><span>00:00</span></td><td id="sunset"><span>00:00</span></td></tr>
 				<tr><td colspan="2" id="date">4 september</td></tr>
 			</table>
 		</div>
@@ -43,6 +44,11 @@
 			<h1>School</h1>
 			<ul>
 				<!-- School events are loaded here -->
+			</ul>
+		</div>
+		<div class="col-md-3" id="email">
+			<ul>
+				<!-- Emails are loaded here -->
 			</ul>
 		</div>
 	</div>
