@@ -2,6 +2,7 @@ function listUpcomingEvents() {
   var tomorrow = new Date();
   tomorrow = tomorrow.setDate(tomorrow.getDate() + 1);
 
+  // Load personal 'next 24 hour' calendar
   var request = gapi.client.calendar.events.list({
     'calendarId': 'primary',
     'timeMin': new Date().toISOString(),
@@ -35,10 +36,24 @@ function listUpcomingEvents() {
 
   });
 
+  // Load school agenda
+  var timeMin = new Date();
+  var timeMax = new Date();
+  if(returnTime() > "15:00"){
+    // Load events for tomorrow
+    timeMin.setDate(timeMin.getDate() + 1);
+    timeMax.setDate(timeMax.getDate() + 1);
+  }
+
+  timeMin.setHours(8);
+  timeMin.setMinutes(0);
+  timeMax.setHours(18);
+  timeMax.setMinutes(0);
+
   var school = gapi.client.calendar.events.list({
     'calendarId': '5h6fbbljm98089k740jlvtdg70@group.calendar.google.com',
-    'timeMin': new Date().toISOString(),
-    'timeMax': new Date(tomorrow).toISOString(),
+    'timeMin': timeMin.toISOString(),
+    'timeMax': timeMax.toISOString(),
     'showDeleted': false,
     'singleEvents': true,
     'maxResults': 9,

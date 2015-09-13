@@ -1,3 +1,4 @@
+
 function listMessages() {
   var resultArray = [];
   var callback = function(resp){
@@ -17,11 +18,11 @@ function listMessages() {
     resultArray.push(tempArray);
 
     // When everything is loaded...
-    if(resultArray.length == 10){
+    if(resultArray.length == 8){
+      $("#email ul").html("");
       // Sort array by time received
       var newArray = resultArray.sort(function(a,b){return a[0] < b[0];});
       for(var item = 0; item < newArray.length; item++){
-        console.log(newArray[item]);
         $("#email ul").append("<li><h1>"+newArray[item][1]+"</h1><span>"+newArray[item][2]+"</span></li>");
       }
     }
@@ -44,6 +45,7 @@ function listMessages() {
   getPageOfMessages(initialRequest, []);
 }
 
+// Receives single message
 function getMessage(messageId, callback) {
   var request = gapi.client.gmail.users.messages.get({
     'userId': 'me',
