@@ -39,7 +39,6 @@ function listMessages() {
   };
   var initialRequest = gapi.client.gmail.users.messages.list({
     'userId': 'me',
-    'maxResults' : 10,
     'labelIds' : 'INBOX'
   });
   getPageOfMessages(initialRequest, []);

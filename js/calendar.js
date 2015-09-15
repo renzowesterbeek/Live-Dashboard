@@ -9,7 +9,6 @@ function listUpcomingEvents() {
     'timeMax': new Date(tomorrow).toISOString(),
     'showDeleted': false,
     'singleEvents': true,
-    'maxResults': 10,
     'orderBy': 'startTime'
   });
 
@@ -24,9 +23,15 @@ function listUpcomingEvents() {
         var startRaw = new Date(events[i].start.dateTime);
         var endRaw = new Date(events[i].end.dateTime);
         var summary = events[i].summary;
-        var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
-        var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
-        personalEvents.push(start + " | " + end + " " + summary);
+        if(startRaw == 'Invalid Date'){
+          // All day event
+          personalEvents.push("All day - " + summary);
+        } else {
+          // Everything else
+          var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
+          var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
+          personalEvents.push(start + " - " + end + " " + summary);
+        }
       }
     } else {
       personalEvents.push('No upcoming events found.');
