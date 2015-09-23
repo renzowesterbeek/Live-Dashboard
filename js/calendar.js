@@ -25,7 +25,7 @@ function listUpcomingEvents() {
         var summary = events[i].summary;
         if(startRaw == 'Invalid Date'){
           // All day event
-          personalEvents.push("All day - " + summary);
+          personalEvents.push("All day | " + summary);
         } else {
           // Everything else
           var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
@@ -78,7 +78,7 @@ function listUpcomingEvents() {
         var summary = events[i].summary;
         var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
         var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
-        schoolEvents.push(start + " | " + end + " " + summary);
+        schoolEvents.push(start + " - " + end + " " + summary);
       }
     } else {
       schoolEvents.push('No upcoming events found.');
@@ -88,12 +88,6 @@ function listUpcomingEvents() {
 
   });
 }
-
-setInterval(function(){
-  $('#calendar ul').html("");
-  $('#rooster ul').html("");
-  listUpcomingEvents();
-}, 5000);
 
 function fillList(id, array){
   id.html('');

@@ -18,12 +18,12 @@ function listMessages() {
     resultArray.push(tempArray);
 
     // When everything is loaded...
-    if(resultArray.length == 8){
+    if(resultArray.length == 5){
       $("#email ul").html("");
       // Sort array by time received
       var newArray = resultArray.sort(function(a,b){return a[0] < b[0];});
       for(var item = 0; item < newArray.length; item++){
-        $("#email ul").append("<li><h1>"+newArray[item][1]+"</h1><span>"+newArray[item][2]+"</span></li>");
+        $("#email ul").append("<li><h2>"+newArray[item][1]+"</h2><span>"+newArray[item][2]+"</span></li>");
       }
     }
   };
