@@ -8,7 +8,6 @@ $(document).ready(function(){
   // Long interval
   setInterval(function(){
     console.log('polling long interval...');
-    $('#clock h1').html(returnTime);
     listMessages();
     getSunsetSunrise();
     $('#calendar ul').html("");
@@ -21,6 +20,7 @@ $(document).ready(function(){
   // Short interval
   setInterval(function(){
     console.log('polling short interval...');
+    $('#clock h1').html(returnTime);
     $('#clock #date').html(returnDate);
   }, 20*1000);
 });
