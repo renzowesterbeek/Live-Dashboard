@@ -7,16 +7,20 @@ var currentversion;
 var remoteversion;
 
 function downloadRepo(){
-  child = exec('git clone https://github.com/renzowesterbeek/Live-Dashboard', function (error, stdout, stderr) {
+  exec('git clone https://github.com/renzowesterbeek/Live-Dashboard', function (error, stdout, stderr) {
+    if(error){ console.log('exec error: ' + error) };
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
-    if (error) {
-      console.log('exec error: ' + error);
-    }
+    exec('cp Live-Dashboard/package.json package.json && cp -r Live-Dashboard/dist/ dist/ && rm -rf Live-Dashboard', function (error, stdout, stderr){
+      if(error){ console.log('exec error: ' + error) };
+      console.log('stdout: ' + stdout);
+      console.log('stderr: ' + stderr);
+    });
   });
 }
 
 setInterval(function(){
+  console.log('polling...');
   fs.readFile('package.json', 'utf8', function (err, data) {
     if(!err){
       currentversion = JSON.parse(data).version; // get local version
