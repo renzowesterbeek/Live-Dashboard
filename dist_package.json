@@ -1,0 +1,10 @@
+{
+  "name": "dashboarddist",
+  "description": "Distribution version of my live dashboard",
+  "version": "0.1.0",
+  "devDependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "~0.4.0"
+  }
+}

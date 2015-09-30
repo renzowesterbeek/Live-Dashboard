@@ -1,6 +1,4 @@
 node_modules/
-Gruntfile.js
 .ftppass
 js/scripts.js
-dist/
 .sass-cache
