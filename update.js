@@ -1,25 +1,40 @@
 var fs = require('fs');
 var http = require('http');
 var request = require('request');
+var exec = require('child_process').exec;
 
-var localfile = "";
-var remotefile = "";
+var currentversion;
+var remoteversion;
 
-fs.readFile('package.json', 'utf8', function (err, data) {
-  if(!err){
-    localfile = data; // get local file
-  } else {
-    throw err;
-  }
-
-  request('https://rawgit.com/renzowesterbeek/siteupdater/master/package.json', function(error, response, body) {
-    if(!error && response.statusCode == 200){
-      remotefile = body; // get remote file
-      if(localfile !== remotefile){
-        console.log("there was a difference");
-      }
-    } else {
-      throw error;
+function downloadRepo(){
+  child = exec('git clone https://github.com/renzowesterbeek/Live-Dashboard', function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if (error) {
+      console.log('exec error: ' + error);
     }
   });
-});
+}
+
+setInterval(function(){
+  fs.readFile('package.json', 'utf8', function (err, data) {
+    if(!err){
+      currentversion = JSON.parse(data).version; // get local version
+    } else {
+      console.log(err);;
+    }
+
+    request('https://cdn.rawgit.com/renzowesterbeek/Live-Dashboard/master/package.json', function(error, response, body) {
+      if(!error && response.statusCode == 200){
+        remoteversion = JSON.parse(body).version; // get remote version
+        if(currentversion !== remoteversion){
+          console.log("New update found: " + remoteversion);
+          downloadRepo();
+        }
+      } else {
+        console.log("Status code: " + response.statusCode);
+        console.log(error);;
+      }
+    });
+  });
+}, 2 * 1000); // INCREASE THIS
