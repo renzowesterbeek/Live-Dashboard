@@ -32,7 +32,7 @@ setInterval(function(){
       console.log(err);;
     }
 
-    request('https://cdn.rawgit.com/renzowesterbeek/Live-Dashboard/master/package.json', function(error, response, body) {
+    request('https://raw.githubusercontent.com/renzowesterbeek/Live-Dashboard/master/package.json', function(error, response, body) {
       if(!error && response.statusCode == 200){
         remoteversion = JSON.parse(body).version; // get remote version
         if(currentversion !== remoteversion){
