@@ -3,8 +3,9 @@ This is my personal dashboard displaying live information. Made for a screen wit
 
 ## Todo
 - [ ] Todo-list
-- [ ] Website auto-updating
+- [ ] Remote-updatable phrase
 - [ ] Twitter feed
+- [X] Website auto-updating
 - [x] Clock
 - [x] Weather (today and tomorrow)
 - [x] Email
@@ -16,8 +17,8 @@ On your remote server, in this case the Raspberry Pi:
 
 | App | Command | Task|
 |-----|---------|-----|
-| Term 1 | `cd dashboard && node update.js` | Check for and download update |
-| Term 2 | `cd dashboard/dist && grunt watch` | Live reload |
+| Term 1 | `cd Live-Dashboard && node update.js` | Check for and download update |
+| Term 2 | `cd Live-Dashboard/dist && grunt watch` | Live reload |
 | Browser | http://localhost/dashboard/dist/ | Display dashboard |
 
 
