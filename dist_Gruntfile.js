@@ -1,5 +1,7 @@
+// Because the dist folder is generated automatically, this file is copied to the dist folder on change.
+
 module.exports = function(grunt){
-  
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 		banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +

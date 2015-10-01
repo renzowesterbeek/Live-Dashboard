@@ -1,3 +1,7 @@
+// update.js
+// Checks whether update is available or not. If true, downloads latest repo from GitHub.
+// Created by Renzo Westerbeek
+
 var fs = require('fs');
 var http = require('http');
 var request = require('request');

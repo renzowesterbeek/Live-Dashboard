@@ -93,7 +93,11 @@ module.exports = function(grunt){
 	    html: {
 	      files: '*.html',
 	      tasks: ['htmlmin'],
-	    }
+	    },
+			dist_files: {
+				files: ['dist_Gruntfile.js', 'dist_package.json'],
+				taks: ['copy:gruntdeploy', 'copy:packagedeploy']
+			}
 	  } // end of task config
 
 	}); // end of grunt.initConfig

@@ -13,10 +13,12 @@ This is my personal dashboard displaying live information. Made for a screen wit
 
 ## How to run
 On your remote server, in this case the Raspberry Pi:
-- Term 1: `cd dashboard && node update.js`
-- Term 2: `cd dashboard && grunt watch`
-- Term 3: `cd dashboard/dist && grunt watch`
-- Browser: http://localhost/dashboard/dist/
+
+| App | Command | Task|
+|-----|---------|-----|
+| Term 1 | `cd dashboard && node update.js` | Check for and download update |
+| Term 2 | `cd dashboard/dist && grunt watch` | Live reload |
+| Browser | http://localhost/dashboard/dist/ | Display dashboard |
 
 
 ## Notes
