@@ -14,12 +14,20 @@ body {
 h1 {
 	font-family: $header-font-stack;
 	margin: 10px;
+	text-align: center;
+	font-size: 26px;
+	text-transform: uppercase;
 }
 .row{
 	margin: 0;
 }
 header{
 	height: 60px;
+}
+header h1{
+	line-height: 60px;
+	margin: 0;
+	text-transform: none;
 }
 .col-md-1,
 .col-md-2,
@@ -38,10 +46,6 @@ ul{
 	list-style: none;
 	padding: 0;
 }
-h1{
-	text-align: center;
-	font-size: 26px;
-}
 #email h2{
 	font-size: 16px;
 }
@@ -50,15 +54,26 @@ h1{
 	text-align: center;
 }
 #clock h1{
+	font-size: 56px;
+}
+#clock span{
 	font-size: 36px;
+}
+#clock #date{
+	font-size: 24px;
 }
 #rooster{
 	padding: 0;
 }
 #rooster li{
 	height: 50px;
-	border: 1px solid gray;
+	border-bottom: 1px solid gray;
 	box-sizing: border-box;
 	width: 100%;
 	line-height: 50px;
+	padding-left: 20px;
+	font-size: 16px;
+}
+#rooster li .time{
+	color: gray;
 }

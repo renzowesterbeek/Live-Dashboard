@@ -78,7 +78,7 @@ function listUpcomingEvents() {
         var summary = events[i].summary;
         var start = zerofix(startRaw.getHours()) + ":" + zerofix(startRaw.getMinutes());
         var end = zerofix(endRaw.getHours()) + ":" + zerofix(endRaw.getMinutes());
-        schoolEvents.push(start + " - " + end + " " + summary);
+        schoolEvents.push("<span class='time'>" + start + " - " + end + "</span> " + summary);
       }
     } else {
       schoolEvents.push('No upcoming events found.');
