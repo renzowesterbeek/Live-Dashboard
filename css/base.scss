@@ -13,9 +13,13 @@ body {
 }
 h1 {
 	font-family: $header-font-stack;
+	margin: 10px;
 }
 .row{
 	margin: 0;
+}
+header{
+	height: 60px;
 }
 .col-md-1,
 .col-md-2,
@@ -25,10 +29,10 @@ h1 {
 	border: 1px solid black;
 }
 .half{
-	min-height: 500px;
+	min-height: 510px;
 }
 .quarter{
-	height: 250px;
+	height: 255px;
 }
 ul{
 	list-style: none;
@@ -47,4 +51,14 @@ h1{
 }
 #clock h1{
 	font-size: 36px;
+}
+#rooster{
+	padding: 0;
+}
+#rooster li{
+	height: 50px;
+	border: 1px solid gray;
+	box-sizing: border-box;
+	width: 100%;
+	line-height: 50px;
 }
