@@ -15,7 +15,7 @@ function downloadRepo(){
     if(error){ console.log('exec error: ' + error) };
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
-    exec('cp Live-Dashboard/package.json package.json && cp -r Live-Dashboard/dist/ dist/ && rm -rf Live-Dashboard', function (error, stdout, stderr){
+    exec('cp Live-Dashboard/package.json package.json && cp -r /Live-Dashboard/dist/ dist/ && rm -rf Live-Dashboard', function (error, stdout, stderr){
       if(error){ console.log('exec error: ' + error) };
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
