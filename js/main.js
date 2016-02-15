@@ -4,6 +4,7 @@ $(document).ready(function(){
   $('#clock #date').html(returnDate);
   getSunsetSunrise();
   $('#greeting').html(getGreeting() + ", Renzo");
+  getWeather();
 
   // Long interval
   setInterval(function(){
@@ -15,6 +16,7 @@ $(document).ready(function(){
     listUpcomingEvents();
     listMessages();
     $('#greeting').html(getGreeting() + ", Renzo");
+    getWeather();
   }, 5*60*1000);
 
   // Short interval

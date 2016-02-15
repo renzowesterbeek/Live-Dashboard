@@ -11,19 +11,19 @@ function getSunsetSunrise(){
 function returnDayName(date){
   var daynum = date.getDay();
   if(daynum === 0){
-    return "Sunday";
+    return "zondag";
   } else if (daynum == 1){
-    return "Monday";
+    return "maandag";
   } else if (daynum == 2){
-    return "Tuesday";
+    return "dinsdag";
   } else if (daynum == 3){
-    return "Wednesday";
+    return "woensdag";
   } else if (daynum == 4){
-    return "Thursday";
+    return "donderdag";
   } else if (daynum == 5){
-    return "Friday";
+    return "vrijdag";
   } else if (daynum == 6){
-    return "Saturday";
+    return "zaterdag";
   }
 }
 
@@ -35,7 +35,7 @@ function returnTime(){
 }
 
 function returnDate(){
-  var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var monthNames = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
   var date = new Date();
   var weekday = returnDayName(date);
   var day = date.getDate();

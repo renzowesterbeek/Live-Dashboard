@@ -33,7 +33,7 @@ module.exports = function(grunt){
         src: 'Gruntfile.js'
       },
       source: {
-        src: ['js/**/*.js']
+        src: ['js/**/*.js', '!js/weather.js']
       },
     },
     sass: {
@@ -74,6 +74,10 @@ module.exports = function(grunt){
 			packagedeploy: {
 				src: 'dist_package.json',
 				dest: 'dist/package.json',
+			},
+			includes: {
+				src: 'include/**/*',
+				dest: 'dist/'
 			}
 		},
 		clean: {
