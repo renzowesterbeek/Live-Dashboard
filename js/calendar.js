@@ -34,7 +34,7 @@ function listUpcomingEvents() {
         }
       }
     } else {
-      personalEvents.push('No upcoming events found.');
+      personalEvents.push('Geen afspraken gevonden.');
     }
 
     fillList($('#calendar ul'), personalEvents);
@@ -81,7 +81,7 @@ function listUpcomingEvents() {
         schoolEvents.push("<span class='time'>" + start + " - " + end + "</span> " + summary);
       }
     } else {
-      schoolEvents.push('No upcoming events found.');
+      schoolEvents.push('Geen lessen gevonden.');
     }
 
     fillList($('#rooster ul'), schoolEvents);
