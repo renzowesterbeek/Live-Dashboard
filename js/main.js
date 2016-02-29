@@ -5,6 +5,7 @@ $(document).ready(function(){
   getSunsetSunrise();
   $('#greeting').html(getGreeting() + ", Renzo");
   getWeather();
+  colors();
 
   // Long interval
   setInterval(function(){
@@ -24,5 +25,6 @@ $(document).ready(function(){
     console.log('polling short interval...');
     $('#clock h1').html(returnTime);
     $('#clock #date').html(returnDate);
+    colors();
   }, 20*1000);
 });

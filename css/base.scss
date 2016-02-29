@@ -23,6 +23,7 @@ h1 {
 }
 header{
 	height: 60px;
+	border-bottom: 1px solid black;
 }
 header h1{
 	line-height: 60px;
@@ -34,7 +35,7 @@ header h1{
 .col-md-3,
 .col-md-4,
 .col-md-5 {
-	border: 1px solid black;
+	border-left: 1px solid black;
 }
 .half{
 	min-height: 510px;
@@ -62,10 +63,10 @@ ul{
 #clock #date{
 	font-size: 24px;
 }
-#rooster{
+.calendar{
 	padding: 0;
 }
-#rooster li{
+.calendar li{
 	height: 50px;
 	border-bottom: 1px solid gray;
 	box-sizing: border-box;
@@ -74,6 +75,6 @@ ul{
 	padding-left: 20px;
 	font-size: 16px;
 }
-#rooster li .time{
+.calendar li .time{
 	color: gray;
 }

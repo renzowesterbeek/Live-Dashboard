@@ -37,7 +37,7 @@ function listUpcomingEvents() {
       personalEvents.push('Geen afspraken gevonden.');
     }
 
-    fillList($('#calendar ul'), personalEvents);
+    fillList($('#personal ul'), personalEvents);
 
   });
 

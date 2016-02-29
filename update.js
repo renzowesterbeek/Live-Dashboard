@@ -11,15 +11,22 @@ var currentversion;
 var remoteversion;
 
 function downloadRepo(){
-  exec('git clone https://github.com/renzowesterbeek/Live-Dashboard', function (error, stdout, stderr) {
-    if(error){ console.log('exec error: ' + error) };
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    exec('cp Live-Dashboard/package.json package.json && cp -r /Live-Dashboard/dist/ dist/ && rm -rf Live-Dashboard', function (error, stdout, stderr){
-      if(error){ console.log('exec error: ' + error) };
+  exec('mkdir update && cd update && git clone https://github.com/renzowesterbeek/Live-Dashboard', function (error, stdout, stderr) {
+    if(error){
+      console.log('exec error: ' + error);
       console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
-    });
+    } else {
+      exec('cp update/Live-Dashboard/package.json package.json && cp -r update/Live-Dashboard/dist/ dist/ && rm -rf update', function (error, stdout, stderr){
+        if(error){
+          console.log('exec error: ' + error);
+          console.log('stdout: ' + stdout);
+          console.log('stderr: ' + stderr);
+        } else {
+          console.log("Update succesfully");
+        }
+      });
+    }
   });
 }
 
@@ -35,6 +42,7 @@ setInterval(function(){
     request('https://raw.githubusercontent.com/renzowesterbeek/Live-Dashboard/master/package.json', function(error, response, body) {
       if(!error && response.statusCode == 200){
         remoteversion = JSON.parse(body).version; // get remote version
+        //remoteversion = "DEV";
         if(currentversion !== remoteversion){
           console.log("New update found: " + remoteversion);
           downloadRepo();
@@ -45,4 +53,4 @@ setInterval(function(){
       }
     });
   });
-}, 2 * 1000); // INCREASE THIS
+}, 5 * 1000); // INCREASE THIS
